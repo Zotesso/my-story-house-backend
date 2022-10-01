@@ -3,12 +3,17 @@ import { Query, Resolver } from "type-graphql";
 @Resolver()
 export class LibraryResolver {
 
-  @Query(() => String)
-  async recommended() {
+  @Query(() => [String])
+  async categories() {
     return [
-      {
-        book: 'book'
-      }
+      'Shoujo',
+      'Shounnen',
+      'Seinen',
+      'Aventura',
+      'Ação',
+      'Romance',
+      'Comédia',
+      'Drama',
     ]
   }
 }
