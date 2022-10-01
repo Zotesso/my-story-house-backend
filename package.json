@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/Zotesso/my-story-house-backend.git"
   },
+  "prisma": {
+    "schema": ".prisma/schema.prisma"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,6 +21,7 @@
   },
   "homepage": "https://github.com/Zotesso/my-story-house-backend#readme",
   "dependencies": {
+    "@prisma/client": "^4.4.0",
     "apollo-server": "^3.10.2",
     "express": "^4.18.1",
     "express-graphql": "^0.12.0",
