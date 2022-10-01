@@ -6,16 +6,20 @@ export class LibraryResolver {
 
   @Query(() => [String])
   async categories() {
-    const categoriesList = await prisma.categories.findMany({
-      select: {
-        name: true,
-      },
-    });
+    try {
+      const categoriesList = await prisma.categories.findMany({
+        select: {
+          name: true,
+        },
+      });
 
-    const categories = categoriesList.map((category) => {
-      return category.name;
-    });
+      const categories = categoriesList.map((category) => {
+        return category.name;
+      });
 
-    return categories;
+      return categories;
+    } catch(e) {
+      return [];
+    }
   }
 }
