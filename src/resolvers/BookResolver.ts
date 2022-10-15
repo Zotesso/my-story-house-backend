@@ -26,4 +26,26 @@ export class BookResolver {
       throw new ApolloError('Ocorreu um problema ao tentar aumentar o número de likes deste livro', '002');
     }
   }
+
+  @Mutation(() => Boolean)
+  async updateBookViews(
+    @Arg("bookId", { nullable: false }) bookId: number,
+  ) {
+    try {
+      const viewedBook = await prisma.book.update({
+        where: {
+          id: bookId
+        },
+        data: {
+          views: {
+            increment: 1
+          }
+        }
+      })
+
+      return !!viewedBook;
+    } catch(error) {
+      throw new ApolloError('Ocorreu um problema ao tentar aumentar o número de views deste livro', '002');
+    }
+  }
 }
