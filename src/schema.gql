@@ -15,6 +15,10 @@ type Book {
   views: Float!
 }
 
+type Mutation {
+  likeBook(bookId: Float!): Boolean!
+}
+
 type Query {
   categories: [String!]!
   listBooks(offset: Float!): [Book!]!
