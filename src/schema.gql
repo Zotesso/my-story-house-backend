@@ -3,6 +3,23 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Book {
+  authorId: Float!
+  description: String!
+  email: String!
+  imageCoverUrl: String!
+  likes: Float!
+  published: Boolean!
+  title: String!
+  videoUrl: String!
+  views: Float!
+}
+
+type Mutation {
+  likeBook(bookId: Float!): Boolean!
+}
+
 type Query {
   categories: [String!]!
+  listBooks(offset: Float!): [Book!]!
 }
