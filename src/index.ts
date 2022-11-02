@@ -1,26 +1,15 @@
-import 'reflect-metadata';
-
-import path from "path";
-import { buildSchema } from "type-graphql";
+import "reflect-metadata";
 import { ApolloServer } from "apollo-server";
+import { buildSchema } from "type-graphql";
 import { LibraryResolver } from "./resolvers/LibraryResolver";
-import { BookResolver } from './resolvers/BookResolver';
 
 async function main() {
-  const schema = await buildSchema({
-    resolvers: [
-      BookResolver,
-      LibraryResolver,
-    ],
-    emitSchemaFile: path.resolve(__dirname, 'schema.gql'),
-  })
-
-  const server = new ApolloServer({
-    schema,
-  })
-
-  const { url } = await server.listen();
-  console.log(`Server running on ${url}`);
+    const schema = await buildSchema({
+        resolvers: [LibraryResolver]
+    })
+    const server = new ApolloServer({schema});
+    const serverInfo = await server.listen();
+    console.log(serverInfo)
 }
 
 main();
